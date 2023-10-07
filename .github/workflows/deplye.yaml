@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: write
 jobs:
   build:
     name: Deploy docs
@@ -10,8 +12,7 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EXTRA_PACKAGES: build-base
+        run: python3 -m mkdocs gh-deploy --force
