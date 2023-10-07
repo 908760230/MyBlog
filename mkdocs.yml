@@ -1,6 +1,6 @@
 site_name: 个人博客
 copyright: Copyright &copy; 2023 - 2023 Lei
-repo_url: https://908760230.github.io/MyBlog
+repo_url:  https://github.com/908760230/MyBlog.git
 repo_name: Github
 nav:
     - 索引: index.md
