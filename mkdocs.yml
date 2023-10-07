@@ -1,5 +1,6 @@
 site_name: 个人博客
 copyright: Copyright &copy; 2023 - 2023 Lei
+custom_dir: docs
 repo_url: https://908760230.github.io/MyBlog
 repo_name: Github
 theme:
