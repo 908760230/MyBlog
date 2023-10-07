@@ -3,6 +3,8 @@ copyright: Copyright &copy; 2023 - 2023 Lei
 custom_dir: docs
 repo_url: https://908760230.github.io/MyBlog
 repo_name: Github
+nav:
+    - 索引 : docs/index.md
 theme:
     icon:
         repo: fontawesome/brands/github
@@ -72,3 +74,22 @@ markdown_extensions:
     - pymdownx.tilde
 extra_css:
   - Stylesheet/mkdocs_extra.css
+plugins:
+    - glightbox
+    - search:
+        separator: '[\s\u200b\-]'
+    - git-revision-date-localized:
+        enable_creation_date: true
+        type: iso_datetime
+    - git-committers:
+        repository: 908760230/MyBlog
+        branch: main
+        docs_path: docs
+        enabled: true
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/908760230
+    - icon: simple/zhihu
+      link: https://www.zhihu.com
+  copyright: Copyright &copy; 2016 - 2020 Martin Donath
