@@ -1,10 +1,11 @@
 site_name: 个人博客
 copyright: Copyright &copy; 2023 - 2023 Lei
-custom_dir: docs
 repo_url: https://908760230.github.io/MyBlog
 repo_name: Github
 nav:
-    - 索引 : docs/index.md
+    - 索引: index.md
+    - c++: 
+        - 目录: c++/0目录.md 
 theme:
     icon:
         repo: fontawesome/brands/github
