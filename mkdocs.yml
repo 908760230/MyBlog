@@ -1,10 +1,43 @@
 site_name: 个人博客
 copyright: Copyright &copy; 2023 - 2023 Lei
 docs_dir: Docs
+repo_url: https://908760230.github.io/MyBlog
 repo_name: Github
 theme:
-name: material
-language: zh
+    icon:
+        repo: fontawesome/brands/github
+    language: zh
+    name: material
+    custom_dir: docs/Stylesheet
+    features:
+        - content.code.annotate
+        - content.code.copy
+        - content.tooltips
+        - navigation.expand
+        - navigation.footer
+        - navigation.indexes
+        - navigation.sections
+        - navigation.instant
+        - navigation.tabs
+        - navigation.top
+        - navigation.tracking
+        - search.highlight
+        - search.share
+        - search.suggest
+        - toc.follow
+        - announce.dismiss
+    palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
 markdown_extensions:
     - abbr
     - admonition
