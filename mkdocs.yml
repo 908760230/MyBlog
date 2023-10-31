@@ -1,6 +1,6 @@
 site_name: 个人博客
 copyright: Copyright &copy; 2023 - 2023 Lei
-repo_url:  https://github.com/908760230/MyBlog.git
+repo_url:  https://github.com/908760230/MyBlog
 repo_name: Github
 nav:
     - 索引: index.md
@@ -91,6 +91,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/908760230
+    - icon: fontawesome/brands/qq
+      title: 1508859213
     - icon: simple/zhihu
       link: https://www.zhihu.com
   copyright: Copyright &copy; 2016 - 2020 Martin Donath
