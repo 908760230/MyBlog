@@ -19,3 +19,14 @@ comments: true
 #endif
 ```
 一步一步来，先看 VulkanContextWindows 是怎么定义的：
+``` cpp
+class VulkanContextWindows : public VulkanContext {
+	virtual const char *_get_platform_surface_extension() const;
+
+public:
+	Error window_create(DisplayServer::WindowID p_window_id, DisplayServer::VSyncMode p_vsync_mode, HWND p_window, HINSTANCE p_instance, int p_width, int p_height);
+
+	VulkanContextWindows();
+	~VulkanContextWindows();
+};
+```
