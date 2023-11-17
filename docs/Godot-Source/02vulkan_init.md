@@ -293,3 +293,16 @@ Error VulkanContext::_window_create(DisplayServer::WindowID p_window_id, Display
 	return OK;
 }
 ```
+其中 _update_swap_chain 创建了 swapchain, renderPass。再通过 renderPass 和 imageview 创建 frameBuffer，还是 vulkan 的默认流程，只不过这里用了一个临时的 rende pass。
+``` cpp
+#if defined(VULKAN_ENABLED)
+
+	if (rendering_driver == "vulkan") {
+		rendering_device_vulkan = memnew(RenderingDeviceVulkan);
+		rendering_device_vulkan->initialize(context_vulkan);
+
+		RendererCompositorRD::make_current();
+	}
+#endif
+```
+我觉得这部分主要是在初始化 vulkan,但是真正的渲染操作却还没执行。
