@@ -6,6 +6,7 @@
 - Qt
 - [vulkan](Vulkan/index.md)
 - [数据结构](DataStruct/index.md)
+- [算法](Algorithm/index.md)
 - 计算机图形学
     -  [Marching Cube](ComputerGraphics/MarchingCube.md)
 - Godot-Projects
