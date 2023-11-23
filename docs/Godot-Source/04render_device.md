@@ -403,8 +403,6 @@ virtual void draw_list_end(BitField<BarrierMask> p_post_barrier = BARRIER_MASK_A
 /**** COMPUTE LISTS ****/
 /***********************/
 
-typedef int64_t ComputeListID;
-
 virtual ComputeListID compute_list_begin(bool p_allow_draw_overlap = false) = 0;
 virtual void compute_list_bind_compute_pipeline(ComputeListID p_list, RID p_compute_pipeline) = 0;
 virtual void compute_list_bind_uniform_set(ComputeListID p_list, RID p_uniform_set, uint32_t p_index) = 0;
