@@ -6,6 +6,23 @@ nav:
     - 索引: index.md
     - c++: 
         - 目录: c++/0目录.md 
+    - 数据结构:
+        - 数据结构是什么: DataStruct/1-数据结构是什么.md
+        - 算法: DataStruct/2-算法.md
+        - 线性表-顺序表: DataStruct/3-线性表-顺序表.md
+        - 线性表-链表: DataStruct/4-线性表-链表.md
+        - 循环链表: DataStruct/5-循环链表.md
+        - 双向链表: DataStruct/6-双向链表.md
+        - 静态链表: DataStruct/7-静态链表.md
+        - 栈: DataStruct/8-栈.md
+        - 队列: DataStruct/9-队列.md
+        - 串: DataStruct/10-串.md
+        - 数组: DataStruct/11-数组.md
+        - 稀疏矩阵的压缩-三元组表（转置）: /12-稀疏矩阵的压缩-三元组表-转置.md
+        - 稀疏矩阵的压缩-三元组（相乘）: /13-稀疏矩阵的压缩-三元组-相乘.md
+        - 稀疏矩阵的压缩-十字链表: DataStruct/14-稀疏矩阵的压缩-十字链表.md
+        - 树: DataStruct/15-树.md
+        
 theme:
     icon:
         repo: fontawesome/brands/github
