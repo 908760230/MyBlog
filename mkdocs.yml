@@ -7,6 +7,7 @@ nav:
     - c++: 
         - 目录: c++/0目录.md 
     - 数据结构:
+        - 目录: DataStruct/index.md
         - 数据结构是什么: DataStruct/1-数据结构是什么.md
         - 算法: DataStruct/2-算法.md
         - 线性表-顺序表: DataStruct/3-线性表-顺序表.md
@@ -22,7 +23,12 @@ nav:
         - 稀疏矩阵的压缩-三元组（相乘）: /13-稀疏矩阵的压缩-三元组-相乘.md
         - 稀疏矩阵的压缩-十字链表: DataStruct/14-稀疏矩阵的压缩-十字链表.md
         - 树: DataStruct/15-树.md
-        
+        - 线索二叉树: DataStruct/17-线索二叉树.md)
+        - 霍夫曼树: DataStruct/18-哈夫曼树.md)
+    - 算法:
+        - 目录: Algorithm/index.md
+        - 串的模式匹配-朴素的模式匹配算法，KMP算法: Algorithm/string_kmp.md
+
 theme:
     icon:
         repo: fontawesome/brands/github
