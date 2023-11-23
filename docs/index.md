@@ -6,8 +6,7 @@
     - [c++目录](c++/0目录.md)
 - Qt
 - vulkan
-- 数据结构
-    -  [目录](DataStruct/index.md)
+- [数据结构](DataStruct/index.md)
 - 计算机图形学
     -  [Marching Cube](ComputerGraphics/MarchingCube.md)
 - Godot-Projects
