@@ -28,7 +28,10 @@ nav:
     - 算法:
         - 目录: Algorithm/index.md
         - 串的模式匹配-朴素的模式匹配算法，KMP算法: Algorithm/string_kmp.md
-
+        - 顺序查找: Algorithm/1-顺序查找.md
+        - 折半查找: Algorithm/2-折半查找.md
+    - 力扣:
+        - 目录: LeetCode/index.md
 theme:
     icon:
         repo: fontawesome/brands/github

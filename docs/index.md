@@ -2,6 +2,7 @@
 
 感觉自己一直在学习，但是学完之后又没学得很深刻，写点内容记录一下。
 ## 目录
+- [力扣](LeetCode/index.md)
 - [c++](c++/0目录.md)
 - Qt
 - [vulkan](Vulkan/index.md)
