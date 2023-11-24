@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Vmd 文件解析
 MikuMikuDance vmd 文件解析代码，用GDScript 编写
 
