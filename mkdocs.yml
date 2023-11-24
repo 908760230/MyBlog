@@ -103,6 +103,7 @@ markdown_extensions:
         custom_checkbox: true
     - pymdownx.tilde
     - tables
+
 extra_css:
   - Stylesheet/mkdocs_extra.css
 plugins:
@@ -125,4 +126,11 @@ extra:
       title: 1508859213
     - icon: simple/zhihu
       link: https://www.zhihu.com
-  copyright: Copyright &copy; 2016 - 2020 Martin Donath
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<908760230@qq.com>
+      name: 邮箱地址
+  copyright: Copyright &copy; 2023 - 2023 Lei
+  analytics:
+    provider: google
+    property: G-BQ2CC7F2NV
+
