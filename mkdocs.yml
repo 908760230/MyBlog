@@ -35,6 +35,8 @@ nav:
 
     - 力扣:
         - 目录: LeetCode/index.md
+    - Blog:
+        - blog/index.md
 theme:
     icon:
         repo: fontawesome/brands/github
@@ -118,6 +120,15 @@ plugins:
         branch: main
         docs_path: docs
         enabled: true
+    - blog
+    - rss:
+        match_path: blog/posts/.* 
+        date_from_meta:
+          as_creation: date
+        categories:
+          - categories
+          - tags
+        comments_path: "#__comments"
 extra:
   social:
     - icon: fontawesome/brands/github
