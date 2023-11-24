@@ -35,6 +35,7 @@ nav:
 
     - 力扣:
         - 目录: LeetCode/index.md
+        - 1.两数之和: LeetCode/1-twoSum.md
     - Blog:
         - blog/index.md
 theme:

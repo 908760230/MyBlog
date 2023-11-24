@@ -1,3 +1,8 @@
+---
+title: Vulkan Render Device 的创建
+comments: true
+---
+
 # Godot渲染流程
 ### 1.3 Vulkan Render Device 的创建
 
@@ -34,7 +39,7 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 	limits = p_context->get_device_limits();
 	max_timestamp_query_elements = 256;
 
-	{ // Initialize allocator.
+	{ // 创建 vma 内存分配器
 
 		VmaAllocatorCreateInfo allocatorInfo;
 		memset(&allocatorInfo, 0, sizeof(VmaAllocatorCreateInfo));
@@ -43,10 +48,10 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 		allocatorInfo.instance = p_context->get_instance();
 		vmaCreateAllocator(&allocatorInfo, &allocator);
 	}
-
+	// 帧缓冲的的数量比 交换链的图片数量多1
 	frames.resize(frame_count);
 	frame = 0;
-	// Create setup and frame buffers.
+	// 为 frame 创建 setup command buffer、 draw command buffer、query pool
 	for (int i = 0; i < frame_count; i++) {
 		frames[i].index = 0;
 
@@ -70,10 +75,10 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 			cmdbuf.commandPool = frames[i].command_pool;
 			cmdbuf.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
 			cmdbuf.commandBufferCount = 1;
-
+			// 创建设置的命令缓冲区
 			VkResult err = vkAllocateCommandBuffers(device, &cmdbuf, &frames[i].setup_command_buffer);
 			ERR_CONTINUE_MSG(err, "vkAllocateCommandBuffers failed with error " + itos(err) + ".");
-
+			// 创建绘制的命令缓冲区
 			err = vkAllocateCommandBuffers(device, &cmdbuf, &frames[i].draw_command_buffer);
 			ERR_CONTINUE_MSG(err, "vkAllocateCommandBuffers failed with error " + itos(err) + ".");
 		}
@@ -124,7 +129,7 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 		//Reset all queries in a query pool before doing any operations with them.
 		vkCmdResetQueryPool(frames[0].setup_command_buffer, frames[i].timestamp_pool, 0, max_timestamp_query_elements);
 	}
-
+	// 设置暂存缓冲区的大小
 	staging_buffer_block_size = GLOBAL_GET("rendering/rendering_device/staging_buffer/block_size_kb");
 	staging_buffer_block_size = MAX(4u, staging_buffer_block_size);
 	staging_buffer_block_size *= 1024; // Kb -> bytes.
