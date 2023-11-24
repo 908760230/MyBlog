@@ -1,5 +1,5 @@
 ---
-title: Vulkan Render Device 的创建
+title: Vulkan Render 的创建
 comments: true
 ---
 
@@ -155,7 +155,7 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 		Error err = _insert_staging_block();
 		ERR_CONTINUE(err != OK);
 	}
-
+	// 最大描述符的数量
 	max_descriptors_per_pool = GLOBAL_GET("rendering/rendering_device/vulkan/max_descriptors_per_pool");
 
 	// Check to make sure DescriptorPoolKey is good.
@@ -167,6 +167,7 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 
 	compute_list = nullptr;
 
+	// 设置渲染管线的缓存路径 user://vulkan/pipelines.xxxxx.cache
 	pipelines_cache.file_path = "user://vulkan/pipelines";
 	pipelines_cache.file_path += "." + context->get_device_name().validate_filename().replace(" ", "_").to_lower();
 	if (Engine::get_singleton()->is_editor_hint()) {
@@ -202,3 +203,58 @@ void RenderingDeviceVulkan::initialize(VulkanContext *p_context, bool p_local_de
 }
 
 ```
+
+### 1.4 RenderServer
+```cpp
+rendering_server = memnew(RenderingServerDefault(OS::get_singleton()->get_render_thread_mode() == OS::RENDER_SEPARATE_THREAD));
+
+rendering_server->init();
+//rendering_server->call_set_use_vsync(OS::get_singleton()->_use_vsync);
+rendering_server->set_render_loop_enabled(!disable_render_loop);
+
+if (profile_gpu || (!editor && bool(GLOBAL_GET("debug/settings/stdout/print_gpu_profile")))) {
+	rendering_server->set_print_gpu_profile(true);
+}
+```
+看代码中有个渲染线程模式的参数，RenderServer中渲染线程类型由这个参数决定。翻到之前的代码可以看到程序启动时，可以执行渲染的线程模式：
+```cpp
+} else if (I->get() == "--render-thread") { // render thread mode
+
+	if (I->next()) {
+		if (I->next()->get() == "safe") {
+			rtm = OS::RENDER_THREAD_SAFE;
+		} else if (I->next()->get() == "unsafe") {
+			rtm = OS::RENDER_THREAD_UNSAFE;
+		} else if (I->next()->get() == "separate") {
+			rtm = OS::RENDER_SEPARATE_THREAD;
+		} else {
+			OS::get_singleton()->print("Unknown render thread mode, aborting.\nValid options are 'unsafe', 'safe' and 'separate'.\n");
+			goto error;
+		}
+
+		N = I->next()->next();
+	} else {
+		OS::get_singleton()->print("Missing render thread mode argument, aborting.\n");
+		goto error;
+	}
+```
+Godot 中渲染线程有三种类型：
+- 线程安全
+- 非线程安全
+- 分离线程
+
+如果没有在启动初期设置，那么在后面的代码中会自动配置
+```cpp
+	if (rtm == -1) {
+		rtm = GLOBAL_DEF("rendering/driver/threads/thread_model", OS::RENDER_THREAD_SAFE);
+	}
+
+	if (rtm >= 0 && rtm < 3) {
+		if (editor || project_manager) {
+			// Editor and project manager cannot run with rendering in a separate thread (they will crash on startup).
+			rtm = OS::RENDER_THREAD_SAFE;
+		}
+		OS::get_singleton()->_render_thread_mode = OS::RenderThreadMode(rtm);
+	}
+```
+默认就是线程安全的模式。编辑器和项目管理器也是也以线程安全的模式运行。
