@@ -3,3 +3,5 @@
 ## 数组
 - [1.两数之和](1-twoSum.md)
 - [26.删除有序数组中的重复项](26.-RemoveDuplicatesfromSortedArray.md)
+- [27.移除元素](27-RemoveElement.md)
+- [35.搜索插入位置](35-SearchInsertPosition.md)
