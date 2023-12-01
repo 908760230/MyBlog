@@ -46,11 +46,10 @@ nav:
     - 力扣:
         - 目录: LeetCode/index.md
         - 1.两数之和: LeetCode/1-twoSum.md
-        - 26.删除有序数组中的重复项: 26.-RemoveDuplicatesfromSortedArray.md
-        - 27.移除元素: 27-RemoveElement.md
-        - 35.搜索插入位置: 35-SearchInsertPosition.md
-    - Blog:
-        - blog/index.md
+        - 26.删除有序数组中的重复项: LeetCode/26-RemoveDuplicatesfromSortedArray.md
+        - 27.移除元素: LeetCode/27-RemoveElement.md
+        - 35.搜索插入位置: LeetCode/35-SearchInsertPosition.md
+        - 66.加一: LeetCode/66-PlusOne.md
 theme:
     icon:
         repo: fontawesome/brands/github

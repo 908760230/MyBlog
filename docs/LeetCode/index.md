@@ -5,3 +5,4 @@
 - [26.删除有序数组中的重复项](26.-RemoveDuplicatesfromSortedArray.md)
 - [27.移除元素](27-RemoveElement.md)
 - [35.搜索插入位置](35-SearchInsertPosition.md)
+- [66.加一](66-PlusOne.md)
