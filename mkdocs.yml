@@ -50,6 +50,7 @@ nav:
         - 27.移除元素: LeetCode/27-RemoveElement.md
         - 35.搜索插入位置: LeetCode/35-SearchInsertPosition.md
         - 66.加一: LeetCode/66-PlusOne.md
+        - 88.合并两个有序数组: LeetCode/88-MergeSortedArray.md
 theme:
     icon:
         repo: fontawesome/brands/github
