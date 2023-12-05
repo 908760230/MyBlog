@@ -51,6 +51,7 @@ nav:
         - 35.搜索插入位置: LeetCode/35-SearchInsertPosition.md
         - 66.加一: LeetCode/66-PlusOne.md
         - 88.合并两个有序数组: LeetCode/88-MergeSortedArray.md
+        - 108.将有序数组转换为二叉搜索树: LeetCode/108-ConvertSortedArrayToBinarySearchTree.md
 theme:
     icon:
         repo: fontawesome/brands/github
