@@ -1,3 +1,9 @@
+---
+title: Render Device 类介绍
+comments: true
+---
+
+
 # Render Device 类介绍
 在这一章节，我的想法是按照这个类的功能来划分，如果照着代码一行一行解释会显得非常的冗长，不适合阅读。
 

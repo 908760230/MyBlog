@@ -1,4 +1,5 @@
 ---
+title: vulkan 的实例化
 comments: true
 ---
 

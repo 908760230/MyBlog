@@ -257,4 +257,91 @@ Godot 中渲染线程有三种类型：
 		OS::get_singleton()->_render_thread_mode = OS::RenderThreadMode(rtm);
 	}
 ```
-默认就是线程安全的模式。编辑器和项目管理器也是也以线程安全的模式运行。
+默认就是线程安全的模式。编辑器和项目管理器也是也以线程安全的模式运行。  
+
+RenderingServerDefault 类集成 RenderingServer，RenderingServer是一个抽象类，定义了实现渲染服务的所有接口，我比较在意的是 RenderingServerDefault 的成员变量 command_queue
+```cpp
+RenderingServerDefault::RenderingServerDefault(bool p_create_thread) :
+		command_queue(p_create_thread) {
+	RenderingServer::init();
+
+	create_thread = p_create_thread;
+
+	if (!p_create_thread) {
+		server_thread = Thread::get_caller_id();
+	} else {
+		server_thread = 0;
+	}
+
+	RSG::threaded = p_create_thread;
+	RSG::canvas = memnew(RendererCanvasCull);
+	RSG::viewport = memnew(RendererViewport);
+	RendererSceneCull *sr = memnew(RendererSceneCull);
+	RSG::camera_attributes = memnew(RendererCameraAttributes);
+	RSG::scene = sr;
+	RSG::rasterizer = RendererCompositor::create();
+	RSG::utilities = RSG::rasterizer->get_utilities();
+	RSG::light_storage = RSG::rasterizer->get_light_storage();
+	RSG::material_storage = RSG::rasterizer->get_material_storage();
+	RSG::mesh_storage = RSG::rasterizer->get_mesh_storage();
+	RSG::particles_storage = RSG::rasterizer->get_particles_storage();
+	RSG::texture_storage = RSG::rasterizer->get_texture_storage();
+	RSG::gi = RSG::rasterizer->get_gi();
+	RSG::fog = RSG::rasterizer->get_fog();
+	RSG::canvas_render = RSG::rasterizer->get_canvas();
+	sr->set_scene_render(RSG::rasterizer->get_scene());
+
+	frame_profile_frame = 0;
+}
+```
+通过构造函数中的代码也可以看出，command_queue 应该是储存绘制命令的队列，至于它的类型解析我放到了（[CommandQueueMT解析](05CommandQueueMT.md)）中。init函数则是渲染器定义了渲染中的一些参数，后面创建了画布裁剪、场景裁剪等等，光照和材质等信息是作为 storage 进行存储。
+至于 RSG 其实是一个全局的 RenderServer别名。
+```cpp
+
+class RenderingServerGlobals {
+public:
+	static bool threaded;
+
+	static RendererUtilities *utilities;
+	static RendererLightStorage *light_storage;
+	static RendererMaterialStorage *material_storage;
+	static RendererMeshStorage *mesh_storage;
+	static RendererParticlesStorage *particles_storage;
+	static RendererTextureStorage *texture_storage;
+	static RendererGI *gi;
+	static RendererFog *fog;
+	static RendererCameraAttributes *camera_attributes;
+	static RendererCanvasRender *canvas_render;
+	static RendererCompositor *rasterizer;
+
+	static RendererCanvasCull *canvas;
+	static RendererViewport *viewport;
+	static RenderingMethod *scene;
+};
+
+#define RSG RenderingServerGlobals
+```
+也就是在 RenderServerDefault 中创建的一列类渲染相关的对象 都被赋给了 RSG 中的静态成员指针，所以 RSG 也是单例模式的一种运用。
+
+创建完 RenderServerDefault 调用它的 init 函数。
+```cpp
+void RenderingServerDefault::init() {
+	if (create_thread) {
+		print_verbose("RenderingServerWrapMT: Creating render thread");
+		DisplayServer::get_singleton()->release_rendering_thread();
+		if (create_thread) {
+			thread.start(_thread_callback, this);
+			print_verbose("RenderingServerWrapMT: Starting render thread");
+		}
+		while (!draw_thread_up.is_set()) {
+			OS::get_singleton()->delay_usec(1000);
+		}
+		print_verbose("RenderingServerWrapMT: Finished render thread");
+	} else {
+		_init();
+	}
+}
+void RenderingServerDefault::_init() {
+	RSG::rasterizer->initialize();
+}
+```
