@@ -124,7 +124,7 @@ markdown_extensions:
 
 # mkdocs.yaml
 extra_javascript:
-    - busuanzi.pure.mini.js
+    - 'busuanzi.pure.min.js'
 
 extra_css:
   - Stylesheet/mkdocs_extra.css
