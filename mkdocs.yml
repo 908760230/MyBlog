@@ -52,9 +52,10 @@ nav:
         - 66.加一: LeetCode/66-PlusOne.md
         - 88.合并两个有序数组: LeetCode/88-MergeSortedArray.md
         - 108.将有序数组转换为二叉搜索树: LeetCode/108-ConvertSortedArrayToBinarySearchTree.md
-        - 118.杨辉三角: LeetCode/118-Pascal'sTriangle.md)
-        - 119.杨辉三角 II: LeetCode/119-Pascal'sTriangleII.md)
-        - 121.买卖股票的最佳时机: LeetCode/121-BestTimeToBuyAndSellStock.md)
+        - 118.杨辉三角: LeetCode/118-Pascal'sTriangle.md
+        - 119.杨辉三角 II: LeetCode/119-Pascal'sTriangleII.md
+        - 121.买卖股票的最佳时机: LeetCode/121-BestTimeToBuyAndSellStock.md
+        - 136.只出现一次的数字:  LeetCode/136-SingleNumber.md
 theme:
     icon:
         repo: fontawesome/brands/github
