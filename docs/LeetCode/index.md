@@ -12,3 +12,4 @@
 - [119.杨辉三角 II](119-Pascal'sTriangleII.md)
 - [121.买卖股票的最佳时机](121-BestTimeToBuyAndSellStock.md)
 - [136.只出现一次的数字](136-SingleNumber.md)
+- [169.多数元素](169-MajorityElement.md)
