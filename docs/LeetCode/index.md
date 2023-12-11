@@ -13,3 +13,6 @@
 - [121.买卖股票的最佳时机](121-BestTimeToBuyAndSellStock.md)
 - [136.只出现一次的数字](136-SingleNumber.md)
 - [169.多数元素](169-MajorityElement.md)
+- [217.存在重复元素](217-ContainsDuplicate.md)
+- [219.存在重复元素II](219-ContainsDuplicateII.md)
+- [228.汇总区间](228-SummaryRanges.md)

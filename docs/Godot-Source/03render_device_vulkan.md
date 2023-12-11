@@ -345,3 +345,4 @@ void RenderingServerDefault::_init() {
 	RSG::rasterizer->initialize();
 }
 ```
+init 函数中其实是 rasterizer 调用其 initialize 函数，rasterizer在 RenderingServerDefault 的构造韩式中其实是 RendererCompositor。
