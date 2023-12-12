@@ -16,3 +16,4 @@
 - [217.存在重复元素](217-ContainsDuplicate.md)
 - [219.存在重复元素II](219-ContainsDuplicateII.md)
 - [228.汇总区间](228-SummaryRanges.md)
+- [268.丢失的数字](268-MissingNumber.md)
