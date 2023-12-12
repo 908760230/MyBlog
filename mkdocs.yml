@@ -42,7 +42,10 @@ nav:
         - 快速排序: Algorithm/12-快速排序.md
     - Godot源码分析:
         - 目录: Godot-Source/index.md
-
+    
+    - Godot样例:
+        - 目录: Godot/index.md
+        
     - 力扣:
         - 目录: LeetCode/index.md
         - 1.两数之和: LeetCode/1-twoSum.md
@@ -64,7 +67,9 @@ nav:
       - 目录: Vulkan/index.md
       - 介绍: Vulkan/1-introduction.md
       - 样例: Vulkan/0-VulkanDemo.md
-      
+
+    - Blog:
+      - 目录: blog/index.md   
 theme:
     icon:
         repo: fontawesome/brands/github
