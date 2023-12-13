@@ -59,10 +59,12 @@ nav:
         - 119.杨辉三角 II: LeetCode/119-Pascal'sTriangleII.md
         - 121.买卖股票的最佳时机: LeetCode/121-BestTimeToBuyAndSellStock.md
         - 136.只出现一次的数字:  LeetCode/136-SingleNumber.md
-        - 169.多数元素: LeetCode/169-MajorityElement.md)
-        - 217.存在重复元素: LeetCode/217-ContainsDuplicate.md)
-        - 219.存在重复元素II: LeetCode/219-ContainsDuplicateII.md)
-        - 228.汇总区间: (LeetCode/228-SummaryRanges.md)
+        - 169.多数元素: LeetCode/169-MajorityElement.md
+        - 217.存在重复元素: LeetCode/217-ContainsDuplicate.md
+        - 219.存在重复元素II: LeetCode/219-ContainsDuplicateII.md
+        - 228.汇总区间: LeetCode/228-SummaryRanges.md
+        - 268.丢失的数字: LeetCode/268-MissingNumber.md
+        - 283.移动零: LeetCode/283-MoveZeroes.md
     - Vulkan:
       - 目录: Vulkan/index.md
       - 介绍: Vulkan/1-introduction.md
