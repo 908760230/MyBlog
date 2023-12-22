@@ -19,3 +19,6 @@
 - [268.丢失的数字](268-MissingNumber.md)
 - [283.移动零](283-MoveZeroes.md)
 - [303.区域和检索-数组不可变](303-RangeSumQuery-Immutable.md)
+- [349.两个数组的交集](349-IntersectionofTwoArrays.md)
+- [350.两个数组的交集II](350-IntersectionofTwoArraysII.md)
+- [414.第三大的数](414-ThirdMaximumNumber.md)
