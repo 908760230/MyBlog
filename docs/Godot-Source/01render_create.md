@@ -6,7 +6,7 @@ comments: true
 # Godot渲染流程
 
 ## 1. 渲染系统的构建
-这次分析的源码是基于Godot 4.2 beta版本。 CommitId是： 09946f79bd8215b2c6332de8821737580909a91c
+这次分析的源码是基于Godot 4.3 版本。 CommitId是： 179dfdc8d78b5bd5377dd115af026df58308bdaf
 
 这篇文章的内容主要是断点调试跟进Godot渲染系统是怎么创建图形渲染设备，调用图形API接口，绘制图像数据。分析的主要是与Vulkan相关的内容，opengl3的类似就不多赘述了，而且与图形不相关的内容我会直接跳过。
 
@@ -15,15 +15,27 @@ comments: true
 ``` cpp
 	{
 		String driver_hints = "";
+		String driver_hints_with_d3d12 = "";
+
+		{
+			Vector<String> driver_hints_arr;
 #ifdef VULKAN_ENABLED
-		driver_hints = "vulkan";
+			driver_hints_arr.push_back("vulkan");
 #endif
+			driver_hints = String(",").join(driver_hints_arr);
+
+#ifdef D3D12_ENABLED
+			driver_hints_arr.push_back("d3d12");
+#endif
+			driver_hints_with_d3d12 = String(",").join(driver_hints_arr);
+		}
 
 		String default_driver = driver_hints.get_slice(",", 0);
+		String default_driver_with_d3d12 = driver_hints_with_d3d12.get_slice(",", 0);
 
 		// For now everything defaults to vulkan when available. This can change in future updates.
-		GLOBAL_DEF_RST("rendering/rendering_device/driver", default_driver);
-		GLOBAL_DEF_RST(PropertyInfo(Variant::STRING, "rendering/rendering_device/driver.windows", PROPERTY_HINT_ENUM, driver_hints), default_driver);
+		GLOBAL_DEF_RST_NOVAL("rendering/rendering_device/driver", default_driver);
+		GLOBAL_DEF_RST_NOVAL(PropertyInfo(Variant::STRING, "rendering/rendering_device/driver.windows", PROPERTY_HINT_ENUM, driver_hints_with_d3d12), default_driver_with_d3d12);
 		GLOBAL_DEF_RST(PropertyInfo(Variant::STRING, "rendering/rendering_device/driver.linuxbsd", PROPERTY_HINT_ENUM, driver_hints), default_driver);
 		GLOBAL_DEF_RST(PropertyInfo(Variant::STRING, "rendering/rendering_device/driver.android", PROPERTY_HINT_ENUM, driver_hints), default_driver);
 		GLOBAL_DEF_RST(PropertyInfo(Variant::STRING, "rendering/rendering_device/driver.ios", PROPERTY_HINT_ENUM, driver_hints), default_driver);
