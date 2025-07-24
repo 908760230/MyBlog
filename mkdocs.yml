@@ -71,7 +71,11 @@ nav:
       - 样例: Vulkan/0-VulkanDemo.md
 
     - Blog:
-      - 目录: blog/index.md   
+      - 目录: blog/index.md
+
+    - 毕昇C编译器:
+      - 目录: BSCompiler/index.md
+      - 1.借用检查: BSCompiler/1-借用检查.md
 theme:
     icon:
         repo: fontawesome/brands/github
